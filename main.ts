@@ -22,9 +22,9 @@ basic.forever(function (){
 
 
 radio.setTransmitPower(7);
-radio.setFrequencyBand(1);
+//radio.setFrequencyBand(1);
 radio.setTransmitSerialNumber(true);
-radio.setGroup(1)
+//radio.setGroup(1)
 
 
 input.onLogoEvent(TouchButtonEvent.Pressed, function() {

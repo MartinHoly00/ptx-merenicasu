@@ -15,6 +15,7 @@ let data = false
 let run = false
 let tajm = 0
 let kod = 0
+let measuring = false
 
 radio.onReceivedNumber(function (receivedNumber: number) {
     kod = receivedNumber
@@ -52,10 +53,10 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
 })
 
 basic.forever(function () {
-    if(kod == 5 ){
-        run = false
-    }
-    if (input.lightLevel() <= LL / 2) {
+/*     if(kod == 5 ){
+        run = false 
+} */
+    if (measuring && input.lightLevel() <= LL / 2) {
         radio.sendNumber(2)
         run = true
         basic.clearScreen()
@@ -72,8 +73,10 @@ basic.forever(function () {
 
     
 input.onButtonPressed(Button.A, function () {
+    measuring = true
     for (let i = 3; i > 0; i--) {
         basic.showNumber(i)
+        music.playTone(Note.C, music.beat(BeatFraction.Whole))
         basic.pause(250)
     }
     radio.sendNumber(3)
